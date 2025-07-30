@@ -29,12 +29,19 @@ class EducateWebsite {
             });
         }
 
-        // Close mobile menu when clicking on a link
+        // Close mobile menu when clicking on a link (except dropdown toggles)
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger?.classList.remove('active');
-                navMenu?.classList.remove('active');
+            link.addEventListener('click', (e) => {
+                // Don't close menu if it's a dropdown toggle
+                const parentItem = link.closest('.nav-item');
+                if (parentItem?.classList.contains('dropdown')) {
+                    e.preventDefault();
+                    parentItem.classList.toggle('active');
+                } else {
+                    hamburger?.classList.remove('active');
+                    navMenu?.classList.remove('active');
+                }
             });
         });
 
@@ -352,6 +359,8 @@ class EducateWebsite {
         }
     }
 
+
+
     // Utility methods
     debounce(func, wait) {
         let timeout;
@@ -502,50 +511,7 @@ function showBranchMap(branch) {
     document.getElementById('branch-card-' + branch).classList.add('selected');
 } 
 
-// Testimonials carousel functionality
-let currentTestimonial = 0;
-const totalTestimonials = 4;
-const visibleTestimonials = 3;
-const maxIndex = totalTestimonials - visibleTestimonials; // 1
 
-function nextTestimonial() {
-    currentTestimonial = Math.min(currentTestimonial + 1, maxIndex);
-    updateTestimonialDisplay();
-}
-
-function prevTestimonial() {
-    currentTestimonial = Math.max(currentTestimonial - 1, 0);
-    updateTestimonialDisplay();
-}
-
-function goToTestimonial(index) {
-    currentTestimonial = Math.max(0, Math.min(index, maxIndex));
-    updateTestimonialDisplay();
-}
-
-function updateTestimonialDisplay() {
-    const slider = document.getElementById('testimonials-slider');
-    const cards = document.querySelectorAll('.testimonials-new-card');
-    const dots = document.querySelectorAll('.testimonials-new-dot');
-    // Get card width and gap
-    let cardWidth = 300;
-    let gap = 24;
-    if (cards.length > 0) {
-        cardWidth = cards[0].offsetWidth;
-        const sliderStyle = window.getComputedStyle(slider);
-        gap = parseInt(sliderStyle.columnGap || sliderStyle.gap || 24, 10);
-    }
-    // Slide the slider
-    slider.style.transform = `translateX(-${currentTestimonial * (cardWidth + gap)}px)`;
-    // Update dots
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentTestimonial);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    updateTestimonialDisplay();
-}); 
 
 // Teachers carousel functionality
 let currentTeacher = 0;
