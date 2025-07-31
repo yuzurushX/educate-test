@@ -1549,6 +1549,7 @@ textarea:focus {
 .about-learning-v2-left p {
   color: #374151;
   font-size: 1rem;
+  text-align: justify;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
