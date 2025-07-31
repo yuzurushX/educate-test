@@ -461,18 +461,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Service Worker registration for PWA capabilities
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
+// Service Worker registration for PWA capabilitie
 
 // Export for potential module usage
 if (typeof module !== 'undefined' && module.exports) {
@@ -547,7 +536,6 @@ function updateTeacherDisplay() {
         gap = parseInt(sliderStyle.columnGap || sliderStyle.gap || 24, 10);
     }
     // Slide the slider
-    slider.style.transform = `translateX(-${currentTeacher * (cardWidth + gap)}px)`;
     // Update dots
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentTeacher);
