@@ -1498,12 +1498,12 @@ textarea:focus {
   }
   .about-learning-right h2 {
     font-size: 1.6rem;
-    text-align: justify;
+    text-align: center;
     margin-bottom: 1rem;
   }
   .about-learning-right p {
     font-size: 1rem;
-    text-align: center;
+    text-align: justify;
   }
   .about-learning-stats {
     flex-direction: column;
