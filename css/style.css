@@ -1369,7 +1369,6 @@ textarea:focus {
   color: #174ea6;
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   font-weight: 800;
-  text-align: justify;
   margin-bottom: 1.2rem;
   line-height: 1.25;
 }
