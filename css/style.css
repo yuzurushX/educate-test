@@ -1660,7 +1660,7 @@ textarea:focus {
   .about-learning-v2-left p {
     font-size: 0.95rem;
     line-height: 1.6;
-    text-align: left;
+    text-align: justify;
   }
   .about-learning-v2-stats {
     flex-direction: column;
